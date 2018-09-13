@@ -1,0 +1,111 @@
+/* ---------------------------------------------------------
+ mixin
+--------------------------------------------------------- */
+/* 縦横比を保持したブロック */
+@mixin u-aspect-ratio( $width: 1, $height: 1 ) {
+  padding-bottom: ($height / $width) * 100%;
+}
+
+/* スクロールできるエリア */
+@mixin u-scrollable( $direction: h/* `h`(横スクロール) or `v`(縦スクロール) */ ) {
+  -webkit-overflow-scrolling: touch;
+  @if ( $direction == h ) {
+    overflow-x: auto;
+    overflow-y: hidden;
+  } @else {
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+}
+
+/* …で省略 */
+// 一行
+@mixin u-ellipsis-inline() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+// 複数行 - 対応ブラウザ少ないのであんまり使えないかも
+@mixin u-ellipsis-multiline( $linenum: 2 ) {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $linenum;
+  overflow: hidden;
+}
+
+/* 三角形 */
+@mixin u-triangle($conf: (
+  w: 10px,
+  h: 10px,
+  direction: top,//top or right or bottom or left(尖ってる方向)
+  color: #000
+)) {
+  $width:     map-get($conf, w);
+  $height:    map-get($conf, h);
+  $direction: map-get($conf, direction);
+  $color:     map-get($conf, color);
+
+  @if ($direction == top) {
+    border-top: none !important;
+    border-right: $width*0.5 solid transparent !important;
+    border-bottom: $height solid $color;
+    border-left: $width*0.5 solid transparent !important;
+  } @else if ($direction == right) {
+    border-top: $height*0.5 solid transparent !important;
+    border-right: none !important;
+    border-bottom: $height*0.5 solid transparent !important;
+    border-left: $width solid $color;
+  } @else if ($direction == left) {
+    border-top: $height*0.5 solid transparent !important;
+    border-right: $width solid $color;
+    border-bottom: $height*0.5 solid transparent !important;
+    border-left: none !important;
+  } @else {
+    border-top: $height solid $color;
+    border-right: $width*0.5 solid transparent !important;
+    border-bottom: none !important;
+    border-left: $width*0.5 solid transparent !important;
+  }
+}
+
+/* ---------------------------------------------------------
+ function
+--------------------------------------------------------- */
+/* $mapの中から、ネストされてる値を取得 */
+@function u-map-deep-get($map, $keys...) {
+  @each $key in $keys {
+    @if not map-has-key($map, $key) {
+      @return null;
+    }
+    $map: map-get($map, $key);
+  }
+  @return $map;
+}
+/* easing指定 */
+@function u-easing( $arg1, $arg2 ) {//$arg1: in or out or inout, $arg2: quad or sine or quart or cubic or circ
+  $ease: (
+    in: (
+      quad:  cubic-bezier(0.550, 0.085, 0.680, 0.530),
+      sine:  cubic-bezier(0.470, 0.000, 0.745, 0.715),
+      quart: cubic-bezier(0.895, 0.030, 0.685, 0.220),
+      cubic: cubic-bezier(0.550, 0.055, 0.675, 0.190),
+      circ:  cubic-bezier(0.600, 0.040, 0.980, 0.335)
+    ),
+    out: (
+      quad:  cubic-bezier(0.250, 0.460, 0.450, 0.940),
+      sine:  cubic-bezier(0.390, 0.575, 0.565, 1.000),
+      quart: cubic-bezier(0.165, 0.840, 0.440, 1.000),
+      cubic: cubic-bezier(0.215, 0.610, 0.355, 1.000),
+      circ:  cubic-bezier(0.075, 0.820, 0.165, 1.000)
+    ),
+    inout: (
+      quad:  cubic-bezier(0.455, 0.030, 0.515, 0.955),
+      sine:  cubic-bezier(0.445, 0.050, 0.550, 0.950),
+      quart: cubic-bezier(0.770, 0.000, 0.175, 1.000),
+      cubic: cubic-bezier(0.645, 0.045, 0.355, 1.000),
+      circ:  cubic-bezier(0.785, 0.135, 0.150, 0.860)
+    )
+  );
+
+  @return u-map-deep-get($ease, $arg1, $arg2);
+}

@@ -1,0 +1,107 @@
+@charset "UTF-8";
+/* ---------------------------------------------------------
+ mixin
+--------------------------------------------------------- */
+/* 縦横比を保持したブロック */
+/* スクロールできるエリア */
+/* …で省略 */
+/* 三角形 */
+/* ---------------------------------------------------------
+ function
+--------------------------------------------------------- */
+/* $mapの中から、ネストされてる値を取得 */
+/* easing指定 */
+section {
+  padding-bottom: 50px; }
+
+div {
+  margin-bottom: 20px; }
+
+.aspect-ratio {
+  width: 200px;
+  background-color: #ccc; }
+  .aspect-ratio:before {
+    display: block;
+    content: ''; }
+
+.aspect-ratio--1-1:before {
+  padding-bottom: 100%; }
+
+.aspect-ratio--16-9:before {
+  padding-bottom: 56.25%; }
+
+.scrollable {
+  width: 200px;
+  height: 200px;
+  background-color: #ccc; }
+
+.scrollable--horizontal {
+  -webkit-overflow-scrolling: touch;
+  overflow-x: auto;
+  overflow-y: hidden; }
+
+.scrollable--vertical {
+  -webkit-overflow-scrolling: touch;
+  overflow-x: hidden;
+  overflow-y: auto; }
+
+.scrollable--horizontal .scrollable__inner {
+  width: 600px;
+  height: 100%; }
+
+.ellipsis {
+  width: 200px;
+  background-color: #ccc; }
+
+.ellipsis--inline {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; }
+
+.ellipsis--2line {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden; }
+
+.ellipsis--3line {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden; }
+
+.triangle {
+  display: inline-block; }
+
+.triangle--top {
+  border-top: none !important;
+  border-right: 20px solid transparent !important;
+  border-bottom: 20px solid #a00;
+  border-left: 20px solid transparent !important; }
+
+.triangle--right {
+  border-top: 10px solid transparent !important;
+  border-right: none !important;
+  border-bottom: 10px solid transparent !important;
+  border-left: 40px solid #00a; }
+
+.triangle--bottom {
+  border-top: 20px solid #a0a;
+  border-right: 20px solid transparent !important;
+  border-bottom: none !important;
+  border-left: 20px solid transparent !important; }
+
+.triangle--left {
+  border-top: 10px solid transparent !important;
+  border-right: 40px solid #0a0;
+  border-bottom: 10px solid transparent !important;
+  border-left: none !important; }
+
+.animation-box {
+  transition: transform 500ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  width: 40px;
+  height: 40px;
+  background-color: #ccc; }
+
+input[type='checkbox']:checked + .animation-box {
+  transform: translateX(160px); }

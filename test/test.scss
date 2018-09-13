@@ -1,0 +1,77 @@
+@import "../utilities";
+
+section { padding-bottom: 50px; }
+div { margin-bottom: 20px; }
+
+.aspect-ratio {
+  width: 200px;
+  background-color: #ccc;
+  &:before {
+    display: block;
+    content: '';
+  }
+}
+.aspect-ratio--1-1:before { @include u-aspect-ratio(); }
+.aspect-ratio--16-9:before { @include u-aspect-ratio(16,9); }
+
+.scrollable {
+  width: 200px;
+  height: 200px;
+  background-color: #ccc;
+}
+.scrollable--horizontal { @include u-scrollable(); }
+.scrollable--vertical { @include u-scrollable(v); }
+.scrollable--horizontal .scrollable__inner {
+  width: 600px;
+  height: 100%;
+}
+
+.ellipsis {
+  width: 200px;
+  background-color: #ccc;
+}
+.ellipsis--inline { @include u-ellipsis-inline(); }
+.ellipsis--2line { @include u-ellipsis-multiline(); }
+.ellipsis--3line { @include u-ellipsis-multiline(3); }
+
+.triangle { display: inline-block; }
+.triangle--top {
+  @include u-triangle((
+    w: 40px,
+    h: 20px,
+    direction: top,
+    color: #a00
+  ));
+}
+.triangle--right {
+  @include u-triangle((
+    w: 40px,
+    h: 20px,
+    direction: right,
+    color: #00a
+  ));
+}
+.triangle--bottom {
+  @include u-triangle((
+    w: 40px,
+    h: 20px,
+    direction: bottom,
+    color: #a0a
+  ));
+}
+.triangle--left {
+  @include u-triangle((
+    w: 40px,
+    h: 20px,
+    direction: left,
+    color: #0a0
+  ));
+}
+
+.animation-box {
+  transition: transform 500ms u-easing(inout, quad);
+  width: 40px;
+  height: 40px;
+  background-color: #ccc;
+}
+input[type='checkbox']:checked + .animation-box { transform: translateX(160px); }

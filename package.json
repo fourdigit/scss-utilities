@@ -1,0 +1,25 @@
+{
+  "name": "@fourdigit/scss-utilities",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "node-sass test/test.scss test/test.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fourdigit/scss-utilities.git"
+  },
+  "author": "FOURDIGIT Inc.",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fourdigit/scss-utilities/issues"
+  },
+  "homepage": "https://github.com/fourdigit/scss-utilities#readme",
+  "devDependencies": {
+    "node-sass": "^4.9.3"
+  }
+}
