@@ -1,5 +1,7 @@
 # scss-utilities
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/fourdigit/scss-utilities.svg)](https://greenkeeper.io/)
+
 [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url]
 
 Fourdigitのプロジェクトで使用するSCSSのユーティリティ集です。
