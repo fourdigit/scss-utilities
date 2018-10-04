@@ -2,10 +2,14 @@
   "name": "@fourdigit/scss-utilities",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "utilities.scss",
   "directories": {
     "test": "test"
   },
+  "style": "utilities.scss",
+  "files": [
+    "utilities.scss"
+  ],
   "scripts": {
     "test": "node-sass test/test.scss test/test.css"
   },

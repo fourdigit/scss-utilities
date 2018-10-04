@@ -10,3 +10,8 @@ Fourdigitのプロジェクトで使用するSCSSのユーティリティ集で�
 
 [travis-image]: https://travis-ci.com/fourdigit/scss-utilities.svg?branch=master
 [travis-url]: https://travis-ci.com/fourdigit/scss-utilities
+
+
+https://github.com/fourdigit/scss-utilities/blob/master/utilities.scss のコメントに使い方を記載しています。
+
+
