@@ -1,28 +1,24 @@
 sudo: false
-
 language: node_js
-
 cache:
-  directories: [~/.npm]
-
+  directories:
+  - "~/.npm"
 notifications:
   email: false
-
 node_js:
-  - lts/carbon
-
+- lts/carbon
 install:
-  - travis_retry yarn install
-
+- travis_retry yarn install
 script:
-  - node --version
-  - npm --version
-  - yarn --version
-  - npm test
-
+- node --version
+- npm --version
+- yarn --version
+- npm test
 deploy:
   provider: npm
   email: vinhpq.tn@gmail.com
-  api_key: e6309f85-6f7d-4458-9b96-52bb4f3c9ede
+  api_key:
+    secure: SsslIxaVgqn11+Y8buzLaJbKw9r3iT79Qpv4LZPvzeMod1z57awFn8iv9wVrGOc7njxwllnIpdTD7Qi36ZDV0iSFbbtACWAwwBUf/pK3Tuu38vyZuYZAT1BE0tzeBlqUr0mWgc4JvfDsebv7QMewQWkf1UQ6wW2nPqrBjBfVs4at+anEfgrQhJmZDl9cMSTCSOo8E1ZxYc6RyD2Z9DDxtGNIkHCa26NvCS5UE/aTwK8kCUO3yXjWKU3P2PsG4OFplDHf+dmL4yIP5HNgZF2vPAANeJihMh3ZrvXJj7F/RyL/aF8PCs/vqLNpc0j99H33NSK2tL3Nr+x4ndcxUGCGxXlbQkqp6KcusQcoBDvbxD1k1FckkQnLpQ0QhU3CiTiawyFqT5xSboz8hOE94Igcl8FaBesuyJu5Pz21ZhhfBnatZ2/2ZL13AHNT8ITkUc2ryicnQsg9Nq8HyW8elRYZidfwPwsR93XJmi+7ReJnpnk5rVvEfVtaWA7gAgNlR9cVQK9Pk9QSYzpEtD6i3IRTD3do01cu3HdPRrgDRxEmp5hQ02hcyjqaoHxkuKGCoBMOEorFsys3rk/y2UYsbxnvebtzW/Rx3S7ww8bo9luNyDzxyxtrsV0MHAzYyz7zfrJenpNlBITw/y1K31khsuGqx5WB/lsHyumKlPq+Mi378qE=
   on:
-    all_branches: true
+    tags: true
+    repo: fourdigit/scss-utilities
