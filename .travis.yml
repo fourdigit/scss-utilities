@@ -1,21 +1,23 @@
 sudo: false
-
 language: node_js
-
 cache:
-  directories: [~/.npm]
-
+  directories:
+  - "~/.npm"
 notifications:
   email: false
-
 node_js:
-  - lts/carbon
-
+- lts/carbon
 install:
-  - travis_retry yarn install
-
+- travis_retry yarn install
 script:
-  - node --version
-  - npm --version
-  - yarn --version
-  - npm test
+- node --version
+- npm --version
+- yarn --version
+- npm test
+deploy:
+  provider: npm
+  email: vinhpq.tn@gmail.com
+  api_key:
+    secure: L9XUbbkhgVT1IDq5tRaLgQZjy+yHKTsD5Y+umqThh+Kwm4AHeGnIORd8ZiaZNc6BuJgyClpSxPVhMtfU1vkdfkdv1Jzr96lJ1OqeNrcXQL997IBP4/yp5X2FuMZBmfqWEcWXB41oLLLqmg7JQ31OJo/kBfv5hrdb6xnpjfc6vue1TYLcCssEeDFFPnVeAxcK/v4HXeg1nj+nz0GkZXBE/DEXcFjvf/MGrB9K05m5J7Rha136deSbL29424O3lsMhqSI7CjACj1PIB7dmSllYn+1iDjrtexxjNeu2l1zBCyzFgaFt7GhDHSHIkSBOYLB2LB1N3udMSH9Dxy0jKNPZUTdSgo61QodHD4dV6sNjQl7r/5MRPZHZgVL1wuxY3gL2tr/X5lxOAOdmEZY92YHNor85QmVzToYl06gbOxeKml2lBlxwWBDmND2bD5dX6PsJBGGclkYlonDZBY3Wa9pqfdRJMfw1P9p7AMl5JF254qLTwv0zIIbvSM9rhLLQ18j8j3oXx8FzyclCNvKPrmBo/MH3QUx6Kuhx/L9GbLA0wFOrRafjDe1NW6UtC0zUm82x2wgbElfLoZTGX+tKx3Koh+iz8/EISM+cLpyprXmqQ7X6G2EqgW2WTsTy0xqn8yYGnLI79PN+Y/KO4yAoq+fgkiy1MQuLw8EoPENNTmXUgZY=
+  on:
+    branch: master
